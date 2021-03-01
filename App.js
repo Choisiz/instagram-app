@@ -11,6 +11,7 @@ import {ThemeProvider} from "styled-components";
 import styles from "./styles";
 import NavController from "./components/NavController";
 import {AuthProvider, useIsLoggedIn} from "./AuthContext";
+import AuthHome from "./navigation/AuthNavigation";
 export default function App(){
   const [loaded, setLoaded] =useState(false);
   const [client, setClient] =useState(null);
@@ -54,7 +55,7 @@ export default function App(){
     <ApolloProvider client={client}>
       <ThemeProvider theme={styles}>
         <AuthProvider isLoggedIn={isLoggedIn}>
-          <NavController />
+          <AuthHome />
           </AuthProvider>
       </ThemeProvider>
     </ApolloProvider>

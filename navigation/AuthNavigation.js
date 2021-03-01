@@ -1,5 +1,5 @@
 import * as React from 'react';
-import SignUp from "../screens/Auth/SignUp";
+import Signup from "../screens/Auth/Signup";
 import Login from "../screens/Auth/Login";
 import AuthHome from "../screens/Auth/AuthHome";
 import Confirm from "../screens/Auth/Confirm";
@@ -13,9 +13,10 @@ export default () => {
     return (
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="AuthHome" component={AuthHome}/>
-            <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="AuthHome" component={AuthHome}/>
+            <Stack.Screen name="Signup" component={Signup} />
+            <Stack.Screen name="Confirm" component={Confirm} />
           </Stack.Navigator>
         </NavigationContainer>
       )
