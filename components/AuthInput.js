@@ -33,7 +33,7 @@ const AuthInput = ({
             authCapitalize={authCapitalize} //특정문자 자동으로 대문자표기
             onChangeText={onChangeText} //텍스트 변경시 호출 콜백
             returnKeyType={returnKeyType} //리턴키 모양 결정
-            onSubmitEditing={onSubmitEditing} //텍스트 입력 끝날때 호출콜백
+            onSubmitEditing={onSubmitEditing} //텍스트 입력 제출시 호출되는 콜백
             autoCorrect={autoCorrect} //자동수정 활성여부
         />
     </Container>

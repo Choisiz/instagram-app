@@ -55,7 +55,7 @@ export default function App(){
     <ApolloProvider client={client}>
       <ThemeProvider theme={styles}>
         <AuthProvider isLoggedIn={isLoggedIn}>
-          <AuthHome />
+          <NavController />
           </AuthProvider>
       </ThemeProvider>
     </ApolloProvider>

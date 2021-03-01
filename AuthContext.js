@@ -5,10 +5,12 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({isLoggedIn: isLoggedInProp,children}) => {
     const [isLoggedIn, setIsLoggedIn] =useState(isLoggedInProp);
-
-    const logUserIn = async() => { //로그인
+    console.log(isLoggedIn);
+    const logUserIn = async(token) => { //로그인
+        console.log(token);
         try{
           await AsyncStorage.setItem("isLoggedIn","true");
+          await AsyncStorage.setItem("jwt",token);
           setIsLoggedIn(true);
         }catch(e){
           console.log(e);
@@ -38,10 +40,10 @@ export const useIsLoggedIn = () => {
 
 export const useLogIn = () => {
     const {logUserIn} = useContext(AuthContext);
-    return;
-}
+    return logUserIn;
+};
 
 export const useLogOut = () => {
     const {logUserOut} = useContext(AuthContext);
-    return;
-}
+    return logUserOut;
+};
