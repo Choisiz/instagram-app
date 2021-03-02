@@ -36,7 +36,6 @@ export default ({route,navigation}) => {
                 data: {confirmSecret}
             } = await confirmSecretMutation();
             if(confirmSecret !=="" || confirmSecret !== false){
-                console.log("된다");
                 logIn(confirmSecret);
             }else{
                 Alert.alert("Wrong secret");
