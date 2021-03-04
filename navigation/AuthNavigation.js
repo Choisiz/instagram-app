@@ -13,10 +13,10 @@ export default () => {
     return (
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="AuthHome" component={AuthHome}/>
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Confirm" component={Confirm} />
+            <Stack.Screen name="Signup" component={Signup} />
           </Stack.Navigator>
         </NavigationContainer>
       )

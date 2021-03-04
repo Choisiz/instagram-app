@@ -10,24 +10,30 @@ import {ApolloClient,InMemoryCache, ApolloProvider} from '@apollo/client';
 import {ThemeProvider} from "styled-components";
 import styles from "./styles";
 import NavController from "./components/NavController";
-import {AuthProvider, useIsLoggedIn} from "./AuthContext";
-import AuthHome from "./navigation/AuthNavigation";
+import {AuthProvider} from "./AuthContext";
+import { setContext } from "apollo-link-context";
+//AsyncStorage.clear();
 export default function App(){
   const [loaded, setLoaded] =useState(false);
   const [client, setClient] =useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+
   const preLoad = async() => {
-    await AsyncStorage.clear();
+
     try{
       await Font.loadAsync({
         ...Ionicons.font
       });
+
       await Asset.loadAsync([require("./assets/logo.png")]);
+
       const cache = new InMemoryCache();
+
       await persistCache({
         cache,
         storage: AsyncStorage
       });
+
       const client = new ApolloClient({
         cache,
         ...apolloClientOptions
@@ -39,6 +45,7 @@ export default function App(){
       }else{
         setIsLoggedIn(true);
       }
+
       setLoaded(true);
       setClient(client);
 
