@@ -8,6 +8,9 @@ import Profile from "../screens/Tabs/Profile";
 import { createStackNavigator } from '@react-navigation/stack';
 import MessagesLink from "../components/MessagesLink";
 import {NavIcon,NavIcon2,NavIcon3} from '../components/NavIcon';
+import { stackStyles } from './config';
+import SearchBar from '../components/SearchBar';
+import Detail from '../screens/Detail';
 
 const Stack = createStackNavigator();
 const TabNavigation = createBottomTabNavigator();
@@ -18,8 +21,15 @@ const stackFactory = (initalRoute, name, customConfig) => (
       name={name}
       component={initalRoute}
       options={{
-        ...customConfig,
+        ...customConfig
         }}/>
+    <Stack.Screen
+      name="Detail"
+      component={Detail}
+      options={{
+        headerTitle: "검색결과" //변경필요
+        }}
+    />
   </Stack.Navigator>
 )
 
@@ -63,7 +73,6 @@ export default () => {
             >
               {() => 
                 stackFactory(Search, "Search", {
-                  title: "Search"
                 })
               }
             </TabNavigation.Screen>
@@ -89,7 +98,7 @@ export default () => {
             <TabNavigation.Screen //Heart
               name ="Notifications"
               options={{tabBarIcon: ({focused}) => (
-                <NavIcon //하단 Add버튼
+                <NavIcon //하단 좋아요 버튼
                   focused={focused}
                   name={focused ? "heart-sharp" : "heart-outline"}
                   size={32}

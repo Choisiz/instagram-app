@@ -2,6 +2,10 @@ import { gql,useQuery } from "@apollo/client";
 import React from "react";
 import styled from "styled-components";
 import Loader from "../../components/Loader";
+import {RefreshControl, ScrollView} from "react-native";
+import styles from "../../styles";
+import { useState } from "react/cjs/react.development";
+import Post from "../../components/Post";
 
 const FEED_QUERY = gql`
     {
@@ -43,11 +47,33 @@ const View = styled.View`
 const Text = styled.Text``;
 
 export default () => {
-    const {data, loading,error} = useQuery(FEED_QUERY);
-    console.log(loading, data,error);
+    const [refreshing, setRefreshing] = useState(false);
+    const {data, loading, refetch} = useQuery(FEED_QUERY);
+    const refresh = async() => {
+        try{
+            setRefreshing(true);
+            await refetch();
+        }catch(e){
+            console.log(e);
+        }finally{
+            setRefreshing(false);
+        }
+    }
+    console.log(loading, data);
     return (
-       <View>
-            {loading ? <Loader/> : null}
-       </View>
+       <ScrollView 
+        style={{backgroundColor: styles.whiteColor}}
+        refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={refresh}/>
+        }
+        >
+            { loading ? (
+                <Loader/>
+                ) : (
+                data &&
+                data.seeFeed &&
+                data.seeFeed.map(post => <Post key={post.id} {...post}/>)
+                )}
+       </ScrollView>
     )
 }
