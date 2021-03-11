@@ -1,38 +1,17 @@
 import React from "react";
 import { gql,useQuery } from "@apollo/client";
-import styled from "styled-components";
 import Loader from "../components/Loader";
 import Post from "../components/Post";
 import { ScrollView } from "react-native";
+import { POST_FRAGMENT } from "../fragments";
 
 const SEE_FULL_POST = gql`
     query seeFullPost($id: String!) {
         seeFullPost(id: $id) {
-                id
-                location
-                caption
-                user {
-                    id
-                    avatar
-                    userName
-                }
-                files {
-                    id
-                    url
-                }
-                likeCount
-                isLiked
-                comments {
-                    id
-                    text
-                    user {
-                        id
-                        userName
-                    }
-                }
-            createdAt
+            ...PostParts
             }
         }
+        ${POST_FRAGMENT}
 `;
 
 export default ({route}) => {
@@ -48,7 +27,6 @@ export default ({route}) => {
             <Loader/>
         ):(
            data && data.seeFullPost && <Post {...data.seeFullPost}/>
-            //<Text>아이디는: {route.params.id}</Text>
         )}
     </ScrollView>
     )

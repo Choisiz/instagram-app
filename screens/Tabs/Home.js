@@ -1,50 +1,21 @@
-import { gql,useQuery } from "@apollo/client";
 import React from "react";
+import { gql,useQuery } from "@apollo/client";
 import styled from "styled-components";
 import Loader from "../../components/Loader";
 import {RefreshControl, ScrollView} from "react-native";
 import styles from "../../styles";
 import { useState } from "react/cjs/react.development";
 import Post from "../../components/Post";
+import { POST_FRAGMENT } from "../../fragments";
 
-const FEED_QUERY = gql`
+export const FEED_QUERY = gql`
     {
         seeFeed {
-            id
-            location
-            caption
-            user {
-                id
-                avatar
-                userName
-            }
-            files {
-                id
-                url
-            }
-            likeCount
-            commentCount
-            isLiked
-            comments {
-                id
-                text
-                user{
-                    id
-                    userName
-                }
-            }
-            createdAt
+            ...PostParts
         }
     }
+    ${POST_FRAGMENT}
 `;
-
-const View = styled.View`
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-`;
-
-const Text = styled.Text``;
 
 export default () => {
     const [refreshing, setRefreshing] = useState(false);
@@ -59,7 +30,7 @@ export default () => {
             setRefreshing(false);
         }
     }
-    console.log(loading, data);
+ 
     return (
        <ScrollView 
         style={{backgroundColor: styles.whiteColor}}

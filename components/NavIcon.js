@@ -1,5 +1,5 @@
 import React from "react";
-import { Ionicons,MaterialIcons, AntDesign, Feather } from "@expo/vector-icons";
+import { MaterialCommunityIcons,Ionicons,MaterialIcons, AntDesign, Feather } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import styles from "../styles";
 
@@ -17,6 +17,10 @@ export const NavIcon3 = ({focused=true,name, color = styles.blackColor, size= 26
 
 export const NavIcon4 = ({focused=true, name, color, size , style}) => (
     <Feather   name={name} color={color} size={size} style={style}/>
+)
+
+export const NavIcon5 = ({focused=true, name, color, size , style}) => (
+    <MaterialCommunityIcons   name={name} color={color} size={size} style={style}/>
 )
 
 NavIcon.propTypes = {
@@ -42,6 +46,13 @@ NavIcon3.propTypes = {
 };
 
 NavIcon4.propTypes = {
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string,
+    size: PropTypes.number,
+    focused: PropTypes.bool
+};
+
+NavIcon5.propTypes = {
     name: PropTypes.string.isRequired,
     color: PropTypes.string,
     size: PropTypes.number,

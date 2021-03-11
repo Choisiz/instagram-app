@@ -1,6 +1,5 @@
-import React, {useEffect,useState} from "react";
+import React, {useState} from "react";
 import {RefreshControl, ScrollView} from "react-native";
-import styled from "styled-components";
 import {NavIcon4 } from "../../components/NavIcon";
 import SearchBar from "../../components/SearchBar";
 import styles from "../../styles";
@@ -87,7 +86,14 @@ export default ({navigation}) => {
                 />
             }
         >
-            {loading ? <Loader/> : data && data.searchPost && data.searchPost.map(post => <CardSearch key={post.id} {...post}/>)}
+            {loading ? (
+                <Loader/>
+                ) : (
+                    data && data.searchPost && data.searchPost.map(post => (
+                    <CardSearch key={post.id} {...post}/>
+                    ))
+                )
+            }
         </ScrollView>
     )
 }

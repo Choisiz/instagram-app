@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+import { useNavigation } from "@react-navigation/native";
 import PropTypes from "prop-types";
 import { Image } from "react-native";
 import Swiper from "react-native-swiper";
@@ -68,8 +69,8 @@ const Post = ({
     caption,
     comments,
     isLiked: isLikedProp,
-    navigation
     }) => {
+    const {navigate} = useNavigation();
     const [isLiked, setIsLiked] =useState(isLikedProp);
     const [likeCount, setLikeCount] =useState(likeCountProp);
     const toggleLikeMutation = useMutation(TOGGLE_LIKE, {
@@ -92,10 +93,18 @@ const Post = ({
         <Container>
 
             <Header>
-                <Touchable>
+                <Touchable 
+                    onPress={() => 
+                        navigate("UserDetail",{userName: user.userName})
+                    }
+                >
                     <Image source={{uri: user.avatar}} style={{height:30, width:30, borderRadius: 20}} />
                 </Touchable>
-                <Touchable>
+                <Touchable
+                    onPress={() => 
+                        navigate("UserDetail",{userName: user.userName})
+                    }
+                >
                     <Bold>{user.userName}</Bold>
                 </Touchable>
             </Header>

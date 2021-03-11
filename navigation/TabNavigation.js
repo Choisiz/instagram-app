@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Platform, View} from "react-native";
+import {Image, View} from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from "../screens/Tabs/Home";
 import Search from "../screens/Tabs/Search";
@@ -8,9 +8,8 @@ import Profile from "../screens/Tabs/Profile";
 import { createStackNavigator } from '@react-navigation/stack';
 import MessagesLink from "../components/MessagesLink";
 import {NavIcon,NavIcon2,NavIcon3} from '../components/NavIcon';
-import { stackStyles } from './config';
-import SearchBar from '../components/SearchBar';
-import Detail from '../screens/Detail';
+import PostDetail from '../screens/PostDetail';
+import UserDetail from "../screens/UserDetail";
 
 const Stack = createStackNavigator();
 const TabNavigation = createBottomTabNavigator();
@@ -24,11 +23,18 @@ const stackFactory = (initalRoute, name, customConfig) => (
         ...customConfig
         }}/>
     <Stack.Screen
-      name="Detail"
-      component={Detail}
+      name="PostDetail"
+      component={PostDetail}
       options={{
         headerTitle: "검색결과" //변경필요
         }}
+    />
+    <Stack.Screen
+      name="UserDetail"
+      component={UserDetail}
+      options={
+        ({route}) => ({title: route.params.userName})
+      }
     />
   </Stack.Navigator>
 )
