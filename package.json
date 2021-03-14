@@ -23,6 +23,7 @@
     "expo": "~40.0.0",
     "expo-app-loading": "^1.0.1",
     "expo-asset": "~8.2.1",
+    "expo-camera": "~9.1.0",
     "expo-font": "~8.4.0",
     "expo-google-app-auth": "^8.1.4",
     "expo-media-library": "~10.0.0",

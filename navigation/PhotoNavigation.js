@@ -21,8 +21,8 @@ const PhotoTabs = () => {
                 },
             }}
           >
-            <MaterialNavigation.Screen name ="TakePhoto" component={TakePhoto}/>
-            <MaterialNavigation.Screen name ="SelectPhoto" component={SelectPhoto}/>
+            <MaterialNavigation.Screen name ="사진" component={TakePhoto}/>
+            <MaterialNavigation.Screen name ="갤러리" component={SelectPhoto}/>
           </MaterialNavigation.Navigator>
       );
 };
