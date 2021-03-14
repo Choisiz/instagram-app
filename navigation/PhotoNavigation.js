@@ -4,14 +4,25 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SelectPhoto from "../screens/Photo/SelectPhoto";
 import TakePhoto from "../screens/Photo/TakePhoto";
 import UploadPhoto from "../screens/Photo/UploadPhoto";
-
+import styles from "../styles";
 const MaterialNavigation = createMaterialTopTabNavigator();
 
 const PhotoTabs = () => {
     return (
-          <MaterialNavigation.Navigator tabBarPosition="bottom">
-            <MaterialNavigation.Screen name ="SelectPhoto" component={SelectPhoto}/>
+          <MaterialNavigation.Navigator 
+            tabBarPosition="bottom"
+            tabBarOptions={{
+                indicatorStyle: {
+                    backgroundColor: styles.orangeColor,
+                    marginBottom: 5
+                },
+                labelStyle: {
+                    fontWeight: "bold"
+                },
+            }}
+          >
             <MaterialNavigation.Screen name ="TakePhoto" component={TakePhoto}/>
+            <MaterialNavigation.Screen name ="SelectPhoto" component={SelectPhoto}/>
           </MaterialNavigation.Navigator>
       );
 };
@@ -20,8 +31,8 @@ const stack = createStackNavigator();
 
 export default () => {
     return (
-        <stack.Navigator headerMode="none">
-            <stack.Screen name="PhotoTabs" component={PhotoTabs}/>
+        <stack.Navigator >
+            <stack.Screen name="PhotoTabs" component={PhotoTabs} options={{headerTitle: "갤러리"}}/>
             <stack.Screen name="UploadPhoto" component={UploadPhoto}/>            
         </stack.Navigator>
     )

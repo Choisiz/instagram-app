@@ -7,5 +7,6 @@ export default {
     blueColor: "#3897F0",
     darkBlueColor: "#003569",
     whiteColor: "#FFFFFF",
-    backgroundColor: "#3897F0"
+    backgroundColor: "#3897F0",
+    orangeColor: "#FF8844"
 };

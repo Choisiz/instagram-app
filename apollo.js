@@ -1,7 +1,7 @@
 import { HttpLink, ApolloLink, concat } from "@apollo/client";
 import AsyncStorage from "@react-native-community/async-storage";
 
-const httpLink = new HttpLink({ uri: "http://172.30.1.54:4000/" });
+const httpLink = new HttpLink({ uri: "http://172.30.1.54:4000" });
 
 const authLink = new ApolloLink(async (operation, forward) => {
     operation.setContext({
@@ -12,12 +12,11 @@ const authLink = new ApolloLink(async (operation, forward) => {
     return forward(operation);
 });
 
-const options = {
-    uri: "http://172.30.1.54:4000/",
+const apolloClientOptions = {
     link: concat(authLink,httpLink),
 };
 
-export default options;
+export default apolloClientOptions;
 
 //const apolloClientOptions = {
    // uri: "http://172.30.1.54:4000/",
