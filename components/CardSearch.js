@@ -16,7 +16,7 @@ const ArrayImage =styled.View`
 
 const IconContainer = styled.View`
     position: absolute;
-    left: 130px;
+    right: 5px;
     top: 5px;
 `;
 

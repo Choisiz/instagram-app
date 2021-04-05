@@ -59,7 +59,7 @@ export default () => {
                   headerRight: () => <MessagesLink />,
                   headerTitle: () => 
                     <Image //인스타그램 로고
-                      style={{height: 30, marginLeft:170}}
+                      style={{height: 30, marginLeft:135}}
                       resizeMode="cover"
                       source={require("../assets/logo.png")}
                     />

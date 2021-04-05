@@ -6,6 +6,7 @@ import TakePhoto from "../screens/Photo/TakePhoto";
 import UploadPhoto from "../screens/Photo/UploadPhoto";
 import styles from "../styles";
 const MaterialNavigation = createMaterialTopTabNavigator();
+const stack = createStackNavigator();
 
 const PhotoTabs = () => {
     return (
@@ -27,13 +28,11 @@ const PhotoTabs = () => {
       );
 };
 
-const stack = createStackNavigator();
-
 export default () => {
     return (
         <stack.Navigator >
             <stack.Screen name="PhotoTabs" component={PhotoTabs} options={{headerTitle: "갤러리"}}/>
-            <stack.Screen name="UploadPhoto" component={UploadPhoto}/>            
+            <stack.Screen name="UploadPhoto" component={UploadPhoto} options={{headerTitle: "업로드"}}/>            
         </stack.Navigator>
     )
 }

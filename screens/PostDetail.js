@@ -20,7 +20,7 @@ export default ({route}) => {
             id: route.params.id
         }
     });
-    console.log(data,loading);
+    
     return (
     <ScrollView>
         {loading ? (
