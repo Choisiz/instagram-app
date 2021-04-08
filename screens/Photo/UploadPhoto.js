@@ -72,14 +72,16 @@ export default ({navigation, route}) => {
     const handleSubmit = async() => { //사진저장
         if(caption.value ==""){
             Alert.alert("All fields are required");
-        }else{
-            const formData = new FormData();
-            formData.append("file",{
-                name: onePhoto.filename,
-                type: "image/jpeg",
-                uri: onePhoto.uri
-            });
-            axios({
+        }
+        const formData = new FormData();
+        formData.append("file",{
+            name: onePhoto.filename,
+            type: "image/jpeg",
+            uri: onePhoto.uri
+        });
+
+        try{
+            const {data: {location}} = await axios({
                 url: "http://172.30.1.54:4000/api/upload", //localhost 안됨
                 method: 'post',
                 headers:{
@@ -87,7 +89,10 @@ export default ({navigation, route}) => {
                 },
                 data: formData,
             });
-        
+            console.log(location);
+            setFile(location);
+        }catch(e){
+            Alert.alert("업로드 할수 없습니다")
         }
     }
 
