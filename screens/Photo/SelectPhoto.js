@@ -72,11 +72,10 @@ export default ({ navigation }) => {
     const [loading,setLoading] =useState(true); // 로딩
     const [hasPerimission, setHasPermission] = useState(false); //접근 권한 허용여부
     const [selected, setSelected] = useState([]); //선택사진
-    const [manySelected, setManySelected] = useState([]); //배열사진
+    const [ArraySelected, setArraySelected] = useState([]); //배열사진
     const [allPhotos, setAllPhotos] =useState(); //모든사진
     const [array, setArray] =useState(true);
     const [refreshing, setRefreshing] = useState(false);
-
     const refresh = async() => {
         try{
             setRefreshing(true);
@@ -90,7 +89,13 @@ export default ({ navigation }) => {
     }
     
     const choiceSelected = (photo) => { //사진 1개
+        console.log(selected);
         setSelected(photo);
+    }
+
+    const choiceSeleted2 = (photo) => { //사진n개
+        setSelected(photo);
+        setArraySelected([...ArraySelected, selected]);
     }
 
     const getPhotos = async() => { // 미디어 라이브러리 제공(엑세스, 저장)
@@ -123,6 +128,10 @@ export default ({ navigation }) => {
 
     const handleSelected = () => { // 1개 업로드
         navigation.navigate("UploadPhoto",{photo: selected})
+    }
+
+    const handleSelected2 = () => { // 1개 업로드
+        navigation.navigate("UploadPhoto",{photo: ArraySelected})
     }
 
     const arrayChoice = () => {//한개 or 여러개 올리기 버튼
@@ -189,7 +198,7 @@ export default ({ navigation }) => {
                                 style={{width: constants.width, height: constants.height /2}}
                                 source={{uri: selected?.uri}}
                             />
-                            <Button onPress={handleSelected}>
+                            <Button onPress={handleSelected2}>
                                 <ButtonText>업로드</ButtonText>
                             </Button>
                             <ArrayPhotoBtn onPress={arrayChoice}>
@@ -207,7 +216,7 @@ export default ({ navigation }) => {
                             >
                                 {allPhotos.map(photo => (
                                     <TouchableOpacity 
-                                        onPress={()=> choiceSelected(photo)}
+                                        onPress={()=> choiceSeleted2(photo)}
                                         key={photo.id}
                                     >
                                         <Image 
