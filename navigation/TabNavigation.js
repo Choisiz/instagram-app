@@ -130,7 +130,7 @@ export default () => {
             >
               {() =>
                 stackFactory(Profile, "Profile", {
-                  title: "Profile",
+                  headerTitle: "Profile",
                 })
               }
             </TabNavigation.Screen>

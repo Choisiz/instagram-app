@@ -1,10 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import { gql,useQuery } from "@apollo/client";
-import styled from "styled-components";
 import Loader from "../../components/Loader";
 import {RefreshControl, ScrollView} from "react-native";
 import styles from "../../styles";
-import { useState } from "react/cjs/react.development";
 import Post from "../../components/Post";
 import { POST_FRAGMENT } from "../../fragments";
 

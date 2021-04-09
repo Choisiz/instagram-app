@@ -8,7 +8,6 @@ import { useNavigation } from '@react-navigation/native';
 import styles from "../styles";
 import { NavIcon5 } from "./NavIcon";
 
-
 const ArrayImage =styled.View`
     display: flex;
     flex-direction: row;
@@ -29,7 +28,7 @@ const CardSearch = ({files,id}) => {
                 <Image
                     source={{uri:files[0].url}}
                     style={{width: constants.width /3,
-                            height: constants.height /6
+                            height: constants.height /6.4
                     }}
                 />
                 <IconContainer>
@@ -44,7 +43,7 @@ const CardSearch = ({files,id}) => {
                     source={{uri:files[0].url}}
                     style={{
                         width: constants.width /3,
-                        height: constants.height /6,
+                        height: constants.height /6.4,
                     }}
                 />
             }

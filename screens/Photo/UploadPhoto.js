@@ -5,17 +5,17 @@ import { Alert, Image, ActivityIndicator, View } from "react-native";
 import useInput from "../../hooks/useInput";
 import constants from "../constants";
 import styles from "../../styles";
-import { gql } from "apollo-boost";
 import { FEED_QUERY } from "../Tabs/Home";
+import { gql,useMutation } from "@apollo/client";
 
 const UPLOAD = gql`
-  mutation upload($caption: String!, $files: [String!]!, $location: String) {
-    upload(caption: $caption, files: $files, location: $location) {
-      id
-      caption
-      location
+    mutation upload($caption: String!, $files: [String!]!, $location: String) {
+        upload(caption: $caption, files: $files, location: $location) {
+            id
+            caption
+            location
+        }
     }
-  }
 `;
 
 const UploadView =styled.View`
@@ -56,31 +56,36 @@ const Button = styled.TouchableOpacity`
 `;
 
 export default ({navigation, route}) => {
+    const [loading, setLoading] = useState(false);
     const onePhoto = route.params.photo;
     const ArrayPhoto = route.params.photo;
     const caption = useInput("");
-    const [loading, setLoading] = useState(false);
-    const [file, setFile] = useState("");
+    const [uploadMutation] = useMutation(UPLOAD,{
+        refetchQueries: () => [{ query: FEED_QUERY }]
+      });
 
-    if(onePhoto){ //사진 1개면
-        console.log("hello");
-    }else{ //사진 n개면
-        ArrayPhoto.filter(function(element){
-        });
-    }
 
-    const handleSubmit = async() => { //사진저장
+    //if(onePhoto){ //사진 1개면
+    //    console.log("hello");
+    //}else{ //사진 n개면
+    //    ArrayPhoto.filter(function(element){
+    //    });
+    //}
+
+    //사진저장
+    const handleSubmit = async() => { 
         if(caption.value ==""){
             Alert.alert("All fields are required");
         }
         const formData = new FormData();
         formData.append("file",{
             name: onePhoto.filename,
-            type: "image/jpeg",
+            type: "image/jpg",
             uri: onePhoto.uri
         });
 
         try{
+            setLoading(true);
             const {data: {location}} = await axios({
                 url: "http://172.30.1.54:4000/api/upload", //localhost 안됨
                 method: 'post',
@@ -89,10 +94,21 @@ export default ({navigation, route}) => {
                 },
                 data: formData,
             });
-            console.log(location);
-            setFile(location);
+
+            const {data: {upload}} = await uploadMutation({
+                variables:{
+                    files: [location],
+                    caption: caption.value
+                }
+            });
+
+            if(upload.id){
+                navigation.navigate("TabNavigation")
+            }
         }catch(e){
             Alert.alert("업로드 할수 없습니다")
+        }finally{
+            setLoading(false);
         }
     }
 

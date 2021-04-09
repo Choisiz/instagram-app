@@ -16,7 +16,9 @@ const TOGGLE_LIKE = gql`
     }
 `;
 
-const Container = styled.View``;
+const Container = styled.View`
+
+`;
 const Header = styled.View`
     padding: 15px;
     flex-direction: row;
@@ -36,6 +38,7 @@ const IconsContainer = styled.View`
 
 const IconContainer = styled.View`
     margin-right: 10px;
+    background-color: white;
 `;
 
 const InfoContaier = styled.View`
@@ -45,6 +48,7 @@ const InfoContaier = styled.View`
 
 const LikeContainer = styled.View`
     marginBottom: 2px;
+    
 `;
 
 const Caption = styled.Text`

@@ -22,7 +22,7 @@ export default ({route}) => {
     });
     
     return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: "white"}}>
         {loading ? (
             <Loader/>
         ):(

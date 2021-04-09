@@ -21,7 +21,7 @@ const HeaderInfo = styled.View`
 `;
 const HeaderItem =styled.View`
     align-items: center;
-    margin-left: 55px;
+    margin-left: 50px;
 `;
 const ItemCount =styled.Text`
     font-weight: 700;
@@ -56,8 +56,9 @@ const Button =styled.View`
 const GridItem =styled.View`
     display: flex;
     flex-direction: row;
+    flexWrap: wrap;
+    
 `;
-
 
 const UserProfile = ({
     avatar,
@@ -71,7 +72,7 @@ const UserProfile = ({
     const [isGrid, setIsGrid] = useState(true);
     const toggleGrid = () => setIsGrid(i => !i);
     return (
-        <View>
+        <View style={{backgroundColor: styles.whiteColor}}>
             <HeaderContainer>
 
                 <Image source={{uri: avatar}} style={{height:100, width:100, borderRadius: 50}} />
@@ -125,16 +126,18 @@ const UserProfile = ({
                 </TouchableOpacity>
                 
             </ButtonContainer>
+            
             {isGrid ? (
                 <GridItem>
                     {posts && posts.map((post) => (
-                        <CardSearch key={post.id} files={post.files} id={post.id} />
-                    ))}
+                        <CardSearch 
+                            key={post.id} files={post.files} id={post.id} />
+                    )).reverse()}
                 </GridItem>
                 ) : (
                     posts && posts.map((post) => (
                         <Post key={post.id} {...post} />  
-                    ))
+                    )).reverse()
                 )
             }
         </View>

@@ -25,7 +25,7 @@ export const POST_FRAGMENT = gql`
         }
     }
     createdAt
-  }
+}
 `;
 
 export const USER_FRAGMENT =gql`

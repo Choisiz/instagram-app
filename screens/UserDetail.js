@@ -4,6 +4,7 @@ import Loader from "../components/Loader";
 import { RefreshControl,ScrollView } from "react-native";
 import { USER_FRAGMENT } from "../fragments";
 import UserProfile from "../components/UserProfile";
+import styles from "../styles";
 
 const GET_USER = gql`
     query seeUser($userName: String!) {
@@ -33,6 +34,7 @@ export default ({route}) => {
       };
     return (
     <ScrollView
+    style={{backgroundColor: styles.whiteColor}}
         refreshControl={
             <RefreshControl
                 onRefresh={onRefresh}
