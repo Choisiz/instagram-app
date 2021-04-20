@@ -64,6 +64,9 @@ const CommentCount = styled.Text`
     opacity: 0.5;
 `;
 
+const CommentAll = styled.View`
+`;
+
 
 const Post = ({
     id,
@@ -159,13 +162,21 @@ const Post = ({
                     </Caption>
                 </LikeContainer>
 
-                <CommentCount>
-                    댓글 {comments.length}
-                </CommentCount>
+                <CommentAll>
+                    <Touchable
+                        onPress={() => 
+                            navigate("CommentDetail")
+                        }
+                    >
+                        <CommentCount>댓글 {comments.length} 모두보기</CommentCount>
+                    </Touchable>
+                </CommentAll>
 
             </InfoContaier>
 
         </Container>
+
+        
     )
 }
 export default Post;

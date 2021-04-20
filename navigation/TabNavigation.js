@@ -10,7 +10,7 @@ import MessagesLink from "../components/MessagesLink";
 import {NavIcon,NavIcon2,NavIcon3} from '../components/NavIcon';
 import PostDetail from '../screens/PostDetail';
 import UserDetail from "../screens/UserDetail";
-
+import CommentDetail from "../screens/CommentDetail";
 const Stack = createStackNavigator();
 const TabNavigation = createBottomTabNavigator();
 
@@ -36,6 +36,14 @@ const stackFactory = (initalRoute, name, customConfig) => (
         ({route}) => ({title: route.params.userName})
       }
     />
+     <Stack.Screen
+      name="CommentDetail"
+      component={CommentDetail}
+      options={{
+        headerTitle: "댓글"
+        }}
+    />
+
   </Stack.Navigator>
 )
 
