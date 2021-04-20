@@ -6,9 +6,15 @@ const Text = styled.Text``;
 
 export default ({route}) => {
     console.log(route);
+    const commenta =route.params.comments;
     return (
         <ScrollView>
-            <Text>dddd</Text>
+            {commenta && commenta.map((comm)=> (
+                <Text>
+                    {comm.text}
+                    {comm.user.userName}
+                </Text>
+            ))}
         </ScrollView>
     )
 }

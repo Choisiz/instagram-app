@@ -165,7 +165,7 @@ const Post = ({
                 <CommentAll>
                     <Touchable
                         onPress={() => 
-                            navigate("CommentDetail")
+                            navigate("CommentDetail",{comments: comments})
                         }
                     >
                         <CommentCount>댓글 {comments.length} 모두보기</CommentCount>
