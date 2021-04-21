@@ -20,7 +20,7 @@ export default ({route}) => {
             id: route.params.id
         }
     });
-    
+  
     return (
     <ScrollView style={{backgroundColor: "white"}}>
         {loading ? (
