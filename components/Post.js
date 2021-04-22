@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
-import PropTypes from "prop-types";
 import { Image } from "react-native";
 import Swiper from "react-native-swiper";
 import constants from "../screens/constants";
@@ -63,6 +62,7 @@ const CommentCount = styled.Text`
     font-weight: bold;
     opacity: 0.5;
 `;
+
 
 const CommentAll = styled.View`
 `;
@@ -141,7 +141,11 @@ const Post = ({
                             />
                         </IconContainer>
                     </Touchable>
-                    <Touchable>
+                    <Touchable
+                        onPress={() => 
+                            navigate("CommentDetail",{comments: comments})
+                        }
+                    >
                         <IconContainer>
                             <NavIcon4 size={30}name={"message-circle"} fontWeight={100}/>
                         </IconContainer>
@@ -168,7 +172,9 @@ const Post = ({
                             navigate("CommentDetail",{comments: comments})
                         }
                     >
-                        <CommentCount>댓글 {comments.length} 모두보기</CommentCount>
+                        <CommentCount>
+                        댓글 {comments.length} 모두보기
+                        </CommentCount>
                     </Touchable>
                 </CommentAll>
 
