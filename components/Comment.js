@@ -1,14 +1,12 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, KeyboardAvoidingView, ScrollView } from "react-native";
 import styled from "styled-components";
 
 const TextInput = styled.TextInput`
-    width: 100%;
-    height:50;
-    font-size: 14px;
-    borderWidth: 1;
-    position: absolute
-    bottom: 0
+  width: 100%;
+  height: 50;
+  font-size: 14px;
+  border: 1px solid;
 `;
 const Views = styled.View`
   flex: 1;
@@ -39,20 +37,21 @@ const Comment = ({
 }) => {
   return (
     <Views>
-      {comments &&
-        comments.map((comm) => (
-          <Touchable key={comm.id}>
-            <Image
-              source={{ uri: comm.user.avatar }}
-              style={{ height: 30, width: 30, borderRadius: 20 }}
-            />
-            <Text>
-              <User>{comm.user.userName}</User>: {comm.text}
-            </Text>
-          </Touchable>
-        ))}
-      <Views11>
-        <Text>{id}</Text>
+      <ScrollView style={{ backgroundColor: "red" }}>
+        {comments &&
+          comments.map((comm) => (
+            <Touchable key={comm.id}>
+              <Image
+                source={{ uri: comm.user.avatar }}
+                style={{ height: 30, width: 30, borderRadius: 20 }}
+              />
+              <Text>
+                <User>{comm.user.userName}</User>: {comm.text}
+              </Text>
+            </Touchable>
+          ))}
+      </ScrollView>
+      <Views11 style={{ backgroundColor: "blue" }}>
         <TextInput //댓글달기
           placeholder={"댓글 달기"}
           onChangeText={onChangeText}
