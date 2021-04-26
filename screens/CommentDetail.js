@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RefreshControl, ScrollView } from "react-native";
+import { RefreshControl, ScrollView, View } from "react-native";
 import styled from "styled-components";
 import Loader from "../components/Loader";
 import styles from "../styles";
@@ -22,6 +22,16 @@ const ADD_COMMENT = gql`
       }
     }
   }
+`;
+
+const TextInput = styled.TextInput`
+  padding: 5px;
+  width: 100%;
+  height: 50;
+  font-size: 14px;
+  border: 1px solid;
+  bottom: 0;
+  background-color: white;
 `;
 
 export default ({ route }) => {
@@ -53,14 +63,22 @@ export default ({ route }) => {
   };
 
   const comment = route.params;
+  console.log(route);
   return (
-    <ScrollView
-      style={{ backgroundColor: styles.whiteColor }}
-      refreshControl={
-        <RefreshControl onRefresh={onRefresh} refreshing={refreshing} />
-      }
-    >
-      <Comment {...comment} onChangeText={www} onSubmitEditing={onPress} />
-    </ScrollView>
+    <View style={{ flex: 1 }}>
+      <ScrollView
+        style={{ backgroundColor: styles.whiteColor, flex: 1 }}
+        refreshControl={
+          <RefreshControl onRefresh={onRefresh} refreshing={refreshing} />
+        }
+      >
+        <Comment {...comment} />
+      </ScrollView>
+      <TextInput
+        placeholder={"댓글 달기"}
+        onChangeText={www}
+        onSubmitEditing={onPress}
+      ></TextInput>
+    </View>
   );
 };
