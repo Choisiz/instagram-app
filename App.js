@@ -12,7 +12,7 @@ import styles from "./styles";
 import NavController from "./components/NavController";
 import { AuthProvider } from "./AuthContext";
 import { setContext } from "apollo-link-context";
-//AsyncStorage.clear();
+AsyncStorage.clear();
 export default function App() {
   const [loaded, setLoaded] = useState(false);
   const [client, setClient] = useState(null);
