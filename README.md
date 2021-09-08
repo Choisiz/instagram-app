@@ -1,7 +1,5 @@
 # 프로젝트명: 인스타그램(모바일)
 
-
-
 ## :muscle: STACK
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -13,19 +11,19 @@
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
 > React Native를 사용한 프론트 엔드 기능구현
-> 
+>
 > Styled-components를 사용한 스타일링
-> 
+>
 > GraphQL, Apollo,Prisma를 사용한 백엔드 구현
-> 
+>
 > JWT, Passport를 사용한 인증 기능구현
-> 
+>
 > Navigator를 사용한 화면구성
-> 
+>
 > expo를 사용
-> 
+>
 > Google api
-> 
+>
 > S3에 업로드
 
 ## :large_blue_circle: 기능
@@ -44,9 +42,9 @@
 
 ## :red_circle: PRIVIEW
 
-![img.gif](readmeGif/gif1.gif)
-![img.gif](readmeGif/gif2.gif)
-![img.gif](readmeGif/gif3.gif)
+![img.gif](readmeGif/gif.gif)
+![img.gif](readmeGif/png1.png)
+![img.gif](readmeGif/png2.gif)
 
 ## :large_blue_circle: 설명
 
